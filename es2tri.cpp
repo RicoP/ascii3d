@@ -19,6 +19,7 @@
 #include <stdlib.h>
 #include <stdio.h>
 #include <string.h>
+#include <unistd.h>
 #include <X11/Xlib.h>
 #include <X11/Xutil.h>
 #include <X11/keysym.h>
@@ -521,12 +522,13 @@ main(int argc, char *argv[])
   int frame = 0; 
 
 	while(run) {
-	//event_loop(x_dpy, win, egl_dpy, egl_surf);
 		draw();
 	  eglSwapBuffers(egl_dpy, egl_surf);
+    glFinish(); 
+
     run = eventHelper.isKeyUp(113 /* Q */); 
-    //printf("run = %s, frame = %i\n", run ? "true" : "false", frame++); 
     view_rotx += 0.1f; 
+    //usleep(1000/60);
 	}
 
 	eglDestroyContext(egl_dpy, egl_ctx);
