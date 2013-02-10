@@ -1,1 +1,2 @@
-clang es2tri.c -lGLESv2 -lEGL -lm -o es2tri
+#!/bin/sh
+clang++ es2tri.cpp eventhelper.cpp -lGLESv2 -lEGL -lm -lpthread -o es2tri
